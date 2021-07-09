@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Power_Saw_Bench.py
+#  Saw.py
 #
 #  Copyright 2020 Yura Moskovskih <yuramoskovskih@gmail.com>
 #
