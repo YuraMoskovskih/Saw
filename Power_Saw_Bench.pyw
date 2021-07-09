@@ -31,7 +31,7 @@ def window(): # create a window and all widgets
     global itog, cvar, pieces_entry, price_entry, root
     root = tkinter.Tk()
     root.title("Расчёт объёма и стоимости доски")
-    root.geometry('490x400-650-350')
+    root.geometry('430x400-650-350')
     root.bind("<Escape>", quit)
 
     thickness_label = tkinter.Label(font='Droid 12', text="Толщина доски в мм.:")
@@ -67,17 +67,20 @@ def window(): # create a window and all widgets
     pieces_entry.insert(0, "500")
     price_entry.insert(0, "9000")
 
-    # create three buttons: "Вычислить", "Очистить", "Показать журнал"
+    # create three buttons: "Вычислить", "Очистить поля", "Показать журнал", "Очистить журнал"
     calculation_button = tkinter.Button(text="Вычислить", width=45, height=3,
                                         font='Droid 12', command=calculation)
-    clear_button = tkinter.Button(text="Очистить", width=15, height=1,
+    clear_button = tkinter.Button(text="Очистить поля", width=15, height=1,
                                   font='Droid 12', command=clear)
     journal_button = tkinter.Button(text="Показать журнал", width=15, height=1,
                                     font='Droid 12', command=journal)
+    clear_log_button = tkinter.Button(text="Очистить журнал", width=15, height=1,
+                                    font='Droid 12', command=clear_log)
 
     calculation_button.grid(row=5, column=0, columnspan=3)
     clear_button.grid(row=6, column=0, columnspan=1)
     journal_button.grid(row=6, column=1, columnspan=4)
+    clear_log_button.grid(row=10, column=1, columnspan=4)
 
     # output field
     itog = tkinter.Text(width=40, height=4, bg="white", fg='black',
@@ -172,6 +175,11 @@ def journal(): # log file display function
 
     # window launch
     root.mainloop()
+    
+    
+def clear_log(): # log cleanup function
+    log = open('journal', 'w')
+    log.close()
 
 
 window()
