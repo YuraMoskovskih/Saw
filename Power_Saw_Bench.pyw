@@ -91,7 +91,7 @@ def window(): # create a window and all widgets
     cvar = tkinter.BooleanVar()
     cvar.set(1)    # default value
     c1 = tkinter.Checkbutton(text="Записывать расчёты в журнал",
-                             variable=cvar, onvalue=1, offvalue=0)
+                             variable=cvar, onvalue=1, offvalue=0, font='Droid 11')
     c1.grid(row=10, column=0, columnspan=1)
 
     # display the program in an infinite loop
