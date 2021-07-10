@@ -3,7 +3,7 @@
 #
 #  Saw.py
 #
-#  Copyright 2020 Yura Moskovskih <yuramoskovskih@gmail.com>
+#  Copyright 2021 Yura Moskovskih <yuramoskovskih@gmail.com>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 #
 
 import tkinter    # module for displaying windows and widgets
+from tkinter import messagebox, Menu # module for displaying the menu
 import time       # module for recording date and time in the log
 import locale     # module for russification of date
 
@@ -31,8 +32,21 @@ def window(): # create a window and all widgets
     global itog, cvar, pieces_entry, price_entry, root
     root = tkinter.Tk()
     root.title("Расчёт объёма и стоимости доски")
-    root.geometry('430x400-650-350')
+    root.geometry()
     root.bind("<Escape>", quit)
+    
+    # program menu
+    menu = Menu(root, font='Droid 10')
+    new_item = Menu(menu)
+    new_item.add_command(label='Помощь', command=man)
+    new_item.add_separator()
+    new_item.add_command(label='О программе', command=about)
+    new_item.add_separator()
+    new_item.add_command(label='Выход', command=root.destroy)
+    menu.add_cascade(label='', menu=new_item)
+    menu.add_cascade(label='Справка', menu=new_item, font='Droid 11')
+    root.config(menu=menu)
+
 
     thickness_label = tkinter.Label(font='Droid 12', text="Толщина доски в мм.:")
     width_label = tkinter.Label(font='Droid 12', text="Ширина доски в мм.:")
@@ -180,6 +194,32 @@ def journal(): # log file display function
 def clear_log(): # log cleanup function
     log = open('journal', 'w')
     log.close()
+
+
+def man(): # display help window
+
+    from tkinter import scrolledtext
+
+    child2 = tkinter.Toplevel(root)   # creating a child window
+    child2.title('Помощь')
+    child2.minsize(width=500, height=500)
+    child2.maxsize(width=500, height=500)
+
+    text = scrolledtext.ScrolledText(child2, width=500,
+                                     height=500, font='Droid 11')
+    text.pack()
+    data = open('help')
+    text.delete('1.0', tkinter.END)
+    text.insert('1.0', data.read())
+    data.close()
+
+    # window launch
+    root.mainloop()
+
+def about(): # menu item "about the program"
+    messagebox.showinfo('О программе', '     Raw\
+        \n\nПрограмма для расчёта объёма и стоимости доски.\
+        \n\nCopyright 2021 Юрий Московских <yuramoskovskih@gmail.com>')
 
 
 window()
