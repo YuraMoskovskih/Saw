@@ -216,6 +216,7 @@ def man(): # display help window
     # window launch
     root.mainloop()
 
+
 def about(): # menu item "about the program"
     messagebox.showinfo('О программе', '     Raw\
         \n\nПрограмма для расчёта объёма и стоимости доски.\
