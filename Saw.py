@@ -22,21 +22,20 @@
 #
 
 import tkinter    # module for displaying windows and widgets
-from tkinter import messagebox, Menu # module for displaying the menu
+from tkinter import messagebox, Menu  # module for displaying the menu
 import time       # module for recording date and time in the log
 import locale     # module for russification of date
 
 
-def window(): # create a window and all widgets
+def window():  # create a window and all widgets
     global thickness_entry, width_entry, long_boards_entry
     global itog, cvar, pieces_entry, price_entry, root
     root = tkinter.Tk()
     root.title("Расчёт объёма и стоимости доски")
     root.geometry()
     root.bind("<Escape>", quit)
-    
-    # program menu
-    menu = Menu(root, font='Droid 10')
+
+    menu = Menu(root, font='Droid 10')  # program menu
     new_item = Menu(menu)
     new_item.add_command(label='Помощь', command=man)
     new_item.add_separator()
@@ -47,10 +46,12 @@ def window(): # create a window and all widgets
     menu.add_cascade(label='Справка', menu=new_item, font='Droid 11')
     root.config(menu=menu)
 
-
-    thickness_label = tkinter.Label(font='Droid 12', text="Толщина доски в мм.:")
-    width_label = tkinter.Label(font='Droid 12', text="Ширина доски в мм.:")
-    long_boards_label = tkinter.Label(font='Droid 12', text="Длина доски в М.:")
+    thickness_label = tkinter.Label(font='Droid 12',
+                                    text="Толщина доски в мм.:")
+    width_label = tkinter.Label(font='Droid 12',
+                                text="Ширина доски в мм.:")
+    long_boards_label = tkinter.Label(font='Droid 12',
+                                      text="Длина доски в М.:")
     pieces_label = tkinter.Label(font='Droid 12',
                                  text="Количество доски в шт.:")
     price_label = tkinter.Label(font='Droid 12',
@@ -81,15 +82,17 @@ def window(): # create a window and all widgets
     pieces_entry.insert(0, "500")
     price_entry.insert(0, "9000")
 
-    # create three buttons: "Вычислить", "Очистить поля", "Показать журнал", "Очистить журнал"
+    # create three buttons: "Вычислить", "Очистить поля",
+    #                       "Показать журнал", "Очистить журнал"
     calculation_button = tkinter.Button(text="Вычислить", width=45, height=3,
                                         font='Droid 12', command=calculation)
     clear_button = tkinter.Button(text="Очистить поля", width=15, height=1,
                                   font='Droid 12', command=clear)
     journal_button = tkinter.Button(text="Показать журнал", width=15, height=1,
                                     font='Droid 12', command=journal)
-    clear_log_button = tkinter.Button(text="Очистить журнал", width=15, height=1,
-                                    font='Droid 12', command=clear_log)
+    clear_log_button = tkinter.Button(text="Очистить журнал", width=15,
+                                      height=1, font='Droid 12',
+                                      command=clear_log)
 
     calculation_button.grid(row=5, column=0, columnspan=3)
     clear_button.grid(row=6, column=0, columnspan=1)
@@ -104,15 +107,15 @@ def window(): # create a window and all widgets
     # checkbox for logging
     cvar = tkinter.BooleanVar()
     cvar.set(1)    # default value
-    c1 = tkinter.Checkbutton(text="Записывать расчёты в журнал",
-                             variable=cvar, onvalue=1, offvalue=0, font='Droid 11')
+    c1 = tkinter.Checkbutton(text="Записывать расчёты в журнал", variable=cvar,
+                             onvalue=1, offvalue=0, font='Droid 11')
     c1.grid(row=10, column=0, columnspan=1)
 
     # display the program in an infinite loop
     root.mainloop()
 
 
-def clear(): # function to clear all fields
+def clear():  # function to clear all fields
     thickness_entry.delete(0, tkinter.END)
     width_entry.delete(0, tkinter.END)
     long_boards_entry.delete(0, tkinter.END)
@@ -121,7 +124,7 @@ def clear(): # function to clear all fields
     itog.delete('1.0', tkinter.END)
 
 
-def calculation(): # calculation function
+def calculation():  # calculation function
 
     # calculation by clicking a widget calculation
     itog.delete('1.0', tkinter.END)
@@ -152,7 +155,7 @@ def calculation(): # calculation function
     write_journal(thickness, width, long_boards, pieces, cube, cost)
 
 
-def write_journal(thickness, width, long_boards, pieces, cube, cost): # logging
+def write_journal(thickness, width, long_boards, pieces, cube, cost):  # loggin
     if cvar.get():    # logging if cvar - True
         thickness = str(thickness)
         width = str(width)
@@ -170,7 +173,7 @@ def write_journal(thickness, width, long_boards, pieces, cube, cost): # logging
         log.close()
 
 
-def journal(): # log file display function
+def journal():  # log file display function
 
     from tkinter import scrolledtext
 
@@ -189,14 +192,14 @@ def journal(): # log file display function
 
     # window launch
     root.mainloop()
-    
-    
-def clear_log(): # log cleanup function
+
+
+def clear_log():  # log cleanup function
     log = open('journal', 'w')
     log.close()
 
 
-def man(): # display help window
+def man():  # display help window
 
     from tkinter import scrolledtext
 
@@ -217,11 +220,10 @@ def man(): # display help window
     root.mainloop()
 
 
-def about(): # menu item "about the program"
+def about():  # menu item "about the program"
     messagebox.showinfo('О программе', 'Raw\
         \n\nПростой и удобный инструмент для расчёта объёма и стоимости доски.\
         \nCopyright 2021 Юрий Московских <yuramoskovskih@gmail.com>')
 
 
 window()
-
