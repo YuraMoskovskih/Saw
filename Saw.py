@@ -218,9 +218,9 @@ def man(): # display help window
 
 
 def about(): # menu item "about the program"
-    messagebox.showinfo('О программе', '     Raw\
-        \n\nПрограмма для расчёта объёма и стоимости доски.\
-        \n\nCopyright 2021 Юрий Московских <yuramoskovskih@gmail.com>')
+    messagebox.showinfo('О программе', 'Raw\
+        \n\nПростой и удобный инструмент для расчёта объёма и стоимости доски.\
+        \nCopyright 2021 Юрий Московских <yuramoskovskih@gmail.com>')
 
 
 window()
