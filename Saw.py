@@ -76,11 +76,11 @@ def window():  # create a window and all widgets
     price_entry.grid(row=4, column=1, padx=5, pady=5)
 
     # default input fields
-    thickness_entry.insert(0, "25")
-    width_entry.insert(0, "100")
-    long_boards_entry.insert(0, "3")
-    pieces_entry.insert(0, "500")
-    price_entry.insert(0, "9000")
+    #        thickness_entry.insert(0, "25")
+    #        width_entry.insert(0, "100")
+    #        long_boards_entry.insert(0, "3")
+    #        pieces_entry.insert(0, "500")
+    #        price_entry.insert(0, "9000")
 
     # create three buttons: "Вычислить", "Очистить поля",
     #                       "Показать журнал", "Очистить журнал"
