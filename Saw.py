@@ -205,8 +205,8 @@ def man():  # display help window
 
     child2 = tkinter.Toplevel(root)   # creating a child window
     child2.title('Помощь')
-    child2.minsize(width=500, height=500)
-    child2.maxsize(width=500, height=500)
+    child2.minsize(width=600, height=600)
+    child2.maxsize(width=600, height=600)
 
     text = scrolledtext.ScrolledText(child2, width=500,
                                      height=500, font='Droid 11')
