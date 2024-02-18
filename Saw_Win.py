@@ -11,7 +11,7 @@ def window():  # create a window and all widgets
     global thickness_entry, width_entry, long_boards_entry
     global itog, cvar, pieces_entry, price_entry, root
     root = tkinter.Tk()
-    #root["bg"] = "#C3FFFE"
+    # root["bg"] = "#C3FFFE"
     root.title("Расчёт объёма и стоимости доски")
     root.geometry()
     # root.bind("<Escape>", quit)
@@ -23,7 +23,7 @@ def window():  # create a window and all widgets
     new_item.add_command(label='О программе', command=about)
     new_item.add_separator()
     new_item.add_command(label='Выход', command=root.destroy)
-    #menu.add_cascade(label='', menu=new_item)
+    # menu.add_cascade(label='', menu=new_item)
     menu.add_cascade(label='Справка', menu=new_item, font='Droid 11')
     root.config(menu=menu)
 

@@ -82,8 +82,8 @@ def window():  # create a window and all widgets
     #        pieces_entry.insert(0, "500")
     #        price_entry.insert(0, "9000")
 
-    # create three buttons: "Вычислить", "Очистить поля",
-    #                       "Показать журнал", "Очистить журнал"
+    # create buttons: "Вычислить", "Очистить поля",
+    #                 "Показать журнал", "Очистить журнал"
     calculation_button = tkinter.Button(text="Вычислить", width=45, height=3,
                                         font='Droid 12', command=calculation)
     clear_button = tkinter.Button(text="Очистить поля", width=15, height=1,
